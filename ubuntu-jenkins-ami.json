@@ -12,11 +12,18 @@
   ],
   "provisioners": [
     {
+      "type": "file",
+      "source": "files/",
+      "destination": "/tmp"
+    },
+    {
       "type": "shell",
       "scripts": [
       "scripts/jenkins-install.sh",
       "scripts/create-ssh-key.sh",
-      "scripts/plugins-install.sh"
+      "scripts/plugins-install.sh",
+      "scripts/install-packer.sh",
+      "scripts/setup-jobs.sh"
       ]
     }
   ]

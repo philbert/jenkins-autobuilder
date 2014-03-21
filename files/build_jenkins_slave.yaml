@@ -1,0 +1,16 @@
+- job:
+   name: build_slave
+   description: 'Do not edit this job through the web!'
+   project-type: freestyle
+   block-downstream: false
+   scm:
+     - git:
+         skip-tag: false
+         url: https://github.com/phiche/jenkins-autobuilder.git
+         branches:
+           - master
+   triggers:
+     - pollscm: '@hourly'
+   builders:
+     - shell: |
+         packer build ubuntu-slave-ami.json   

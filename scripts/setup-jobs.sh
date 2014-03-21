@@ -8,8 +8,12 @@ sudo easy_install pip pbr
 
 echo "Now install the jenkins-job-builder"
 git clone https://github.com/openstack-infra/jenkins-job-builder.git
-sudo python jenkins-job-builder/setup.py install
+cd jenkins-job-builder
+sudo python setup.py install
 
-echo "Installing preconfigured jobs"
-jenkins-jobs update /tmp/build-jenkins-master.yaml
-
+echo "Setup the preconfigured jobs"
+sudo mkdir /etc/jenkins_jobs
+sudo mv /tmp/jenkins_jobs.ini /etc/jenkins_jobs
+jenkins-jobs update /tmp/build_jenkins_master.yaml
+jenkins-jobs update /tmp/build_jenkins_slave.yaml
+jenkins-jobs update /tmp/add_slave.yaml

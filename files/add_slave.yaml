@@ -1,0 +1,9 @@
+- job:
+   name: add_slave
+   description: 'Do not edit this job through the web!'
+   project-type: freestyle
+   block-downstream: false
+   builders:
+     - shell: |
+         ec2-run-instances
+         echo "still need to figure how do get the AMI name back to this job"
