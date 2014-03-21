@@ -1,0 +1,32 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "eu-west-1",
+      "source_ami": "ami-808675f7",
+      "instance_type": "m1.medium",
+      "ssh_username": "ubuntu",
+      "ssh_timeout": "5m",
+      "ami_name": "ubuntu-jenkins-slave {{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/slave-install.sh"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "files/jenkins-slave.conf",
+      "destination": "/tmp/jenkins-slave.conf"
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/swarm-service.sh"
+        ]
+    }
+  ]
+}

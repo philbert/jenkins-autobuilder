@@ -1,0 +1,23 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "eu-west-1",
+      "source_ami": "ami-808675f7",
+      "instance_type": "m1.medium",
+      "ssh_username": "ubuntu",
+      "ssh_timeout": "5m",
+      "ami_name": "ubuntu-jenkins-master {{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+      "scripts/jenkins-install.sh",
+      "scripts/create-ssh-key.sh",
+      "scripts/plugins-install.sh"
+      ]
+    }
+  ]
+}
