@@ -31,7 +31,7 @@ At the end of the packer build, the console output will tell you the name of the
 * to build a new master (using this exact same method described here)
 * build a new jenkins slave which connects to the master using the swarm plugin (still a manual step to add the necessary environment variables and fix ports so that this works)
 * add a new jenkins slave which will spin up the instance create and auto connect to the jenkins master
-* you need to allow traffic into the master form the slaves on ports 8080 for discovery and 42529 to complete the connection.
+* you need to allow traffic into the master from the slaves on ports 8080 for discovery and 42529 to complete the connection.
 
 TODOs
 -------------------
